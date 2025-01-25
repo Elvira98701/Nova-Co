@@ -1,0 +1,169 @@
+@use "@styles/helpers/mixins" as *;
+@use "@styles/helpers/functions" as *;
+
+.projects {
+  height: 70vh;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+
+  &__slides {
+    @include flex-center;
+    -moz-column-gap: rem(20);
+    column-gap: rem(20);
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    @media (max-width: 1249px) {
+      justify-content: flex-start;
+      -moz-column-gap: 0;
+      column-gap: 0;
+    }
+  }
+
+  &__slide {
+    color: var(--color-light);
+    height: 100%;
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    &:nth-child(1) {
+      background: url("../../public/images/projects/1.jpg") center / cover
+        no-repeat;
+    }
+
+    &:nth-child(2) {
+      background: url("../../public/images/projects/2.jpg") center / cover
+        no-repeat;
+    }
+
+    &:nth-child(3) {
+      background: url("../../public/images/projects/3.jpg") center / cover
+        no-repeat;
+    }
+
+    &:nth-child(4) {
+      background: url("../../public/images/projects/4.jpg") center / cover
+        no-repeat;
+    }
+
+    @media (min-width: 1250px) {
+      flex: 1;
+
+      &:hover {
+        flex: 1.5;
+
+        .projects__tags {
+          opacity: 1;
+        }
+
+        .projects__arrow {
+          transform: rotate(0);
+          background-color: var(--color-accent);
+        }
+      }
+    }
+
+    @media (max-width: 1249px) {
+      min-width: 50%;
+    }
+
+    @media (max-width: 750px) {
+      min-width: 100%;
+    }
+  }
+
+  &__tag {
+    @include flex-center;
+    -moz-column-gap: rem(10);
+    column-gap: rem(10);
+  }
+
+  &__tags {
+    position: absolute;
+    left: rem(20);
+    top: rem(20);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+
+  &__circle {
+    content: "";
+    @include square(rem(12));
+    background-color: var(--color-light);
+    border-radius: 50%;
+    outline: 2px solid var(--color-light);
+    outline-offset: rem(5);
+  }
+
+  &__tag-text {
+    border: 1px solid var(--color-light);
+    padding: rem(5) rem(10);
+    border-radius: var(--border-radius);
+  }
+
+  &__arrow {
+    @include square(50px);
+    background: var(--color-light) url("../../public/icons/arrow-right.svg")
+      center / 50% no-repeat;
+    border-radius: 50%;
+    transition: all 0.3s;
+    position: absolute;
+    right: rem(15);
+    top: rem(15);
+    transform: rotate(-45deg);
+    transition: all 0.3s;
+  }
+
+  &__body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: rem(15);
+    row-gap: rem(15);
+  }
+
+  &__subtitle {
+    font-size: clamp(1.25rem, 1rem + 1.25vw, 2.5rem);
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &__button {
+    width: 100%;
+    text-transform: uppercase;
+    justify-content: space-between;
+    font-size: rem(14);
+    font-weight: 600;
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-light);
+    cursor: pointer;
+    display: none;
+    @include square(rem(50));
+    border-radius: 50%;
+
+    @media (max-width: 1249px) {
+      @include flex-center;
+    }
+  }
+
+  &__prev {
+    left: rem(10);
+  }
+
+  &__next {
+    right: rem(10);
+  }
+}

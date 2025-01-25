@@ -1,0 +1,141 @@
+@use "@styles/helpers/mixins" as *;
+@use "@styles/helpers/functions" as *;
+
+html,
+body {
+  width: 100vw;
+  padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-size: rem(16);
+  font-family: var(--font-family-base);
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+button {
+  @include reset-button;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.container {
+  margin-inline: var(--container-margin);
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  -webkit-clip-path: inset(100%) !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.button {
+  @include flex-center;
+  -moz-column-gap: rem(5);
+  column-gap: rem(5);
+  border-radius: var(--border-radius);
+  padding: rem(8) rem(20);
+  text-transform: capitalize;
+  background-color: var(--color-light);
+  border: 2px solid transparent;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.5s linear;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &_outline {
+    background-color: transparent;
+    border: 2px solid var(--color-lightgrey);
+  }
+
+  &_accent {
+    background-color: var(--color-lightgrey);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-accent);
+    transition: all 0.3s linear;
+    border-radius: var(--border-radius);
+    z-index: -1;
+  }
+
+  &:hover {
+    border: 2px solid var(--color-accent);
+
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+#cursor {
+  @include square(100px);
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  will-change: transform;
+  pointer-events: none;
+  z-index: 300;
+  transform: translateX(-200px);
+  transition: all 0.1s linear;
+
+  &.overlay {
+    @include square(5px);
+  }
+}
+
+html.popup-opened {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}
+
+.logo {
+  font-weight: 600;
+  background-color: var(--color-lightgrey);
+  border-radius: var(--border-radius);
+  padding: rem(10) rem(15);
+  @include flex-center;
+  -moz-column-gap: rem(5);
+  column-gap: rem(5);
+}

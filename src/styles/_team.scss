@@ -1,0 +1,156 @@
+@use "@styles/helpers/mixins" as *;
+@use "@styles/helpers/functions" as *;
+
+.team {
+  --size: clamp(3.125rem, 2.5rem + 3.13vw, 6.25rem);
+
+  position: relative;
+  min-height: 70vh;
+  padding-block: var(--section-padding-block);
+
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  &__circle {
+    border: 2px solid var(--color-accent);
+    width: clamp(28.125rem, 21.25rem + 34.38vw, 62.5rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    -webkit-animation: rotateAnim 20s infinite linear;
+    animation: rotateAnim 20s infinite linear;
+
+    &-small {
+      border: 2px solid var(--color-accent);
+      width: clamp(22.5rem, 17rem + 27.5vw, 50rem);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      -webkit-animation: rotate-anim-back 30s infinite linear;
+      animation: rotate-anim-back 30s infinite linear;
+
+      span {
+        display: inline-block;
+        @include square(var(--size));
+        background-color: var(--color-dark);
+        border-radius: 50%;
+        position: absolute;
+        border: 2px solid var(--color-accent);
+
+        &:nth-child(1) {
+          top: calc(var(--size) / 2 * -1);
+          left: 50%;
+          background: url("@assets/team/1.jpg") center / cover no-repeat;
+        }
+
+        &:nth-child(2) {
+          left: calc(var(--size) / 2 * -1);
+          top: 50%;
+          background: url("@assets/team/2.jpg") center / cover no-repeat;
+        }
+
+        &:nth-child(3) {
+          bottom: calc(var(--size) / 2 * -1);
+          right: 50%;
+          background: url("@assets/team/3.jpg") center / cover no-repeat;
+        }
+      }
+    }
+
+    span {
+      display: inline-block;
+      @include square(var(--size));
+      background-color: var(--color-dark);
+      border-radius: 50%;
+      position: absolute;
+      border: 2px solid var(--color-accent);
+
+      &:nth-child(1) {
+        left: calc(var(--size) / 2 * -1);
+        top: 50%;
+        background: url("@assets/team/4.jpg") center / cover no-repeat;
+      }
+
+      &:nth-child(2) {
+        top: calc(var(--size) / 2 * -1);
+        left: 50%;
+        background: url("@assets/team/5.jpg") center / cover no-repeat;
+      }
+
+      &:nth-child(3) {
+        right: calc(var(--size) / 2 * -1);
+        top: 50%;
+        background: url("@assets/team/6.jpg") center / cover no-repeat;
+      }
+    }
+  }
+
+  &__slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(18.75rem, 17.5rem + 6.25vw, 25rem);
+    aspect-ratio: 1;
+
+    &-image {
+      width: 100%;
+      aspect-ratio: 1;
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+      -webkit-animation: slideIn 0.5s;
+      animation: slideIn 0.5s;
+    }
+  }
+
+  &__member {
+    font-weight: 600;
+    text-align: center;
+    padding-top: rem(10);
+
+    span {
+      font-size: rem(18);
+      color: var(--color-accent);
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-light);
+    background-color: var(--color-accent);
+    @include flex-center;
+    @include square(rem(60));
+    border-radius: 50%;
+    cursor: pointer;
+    transition: scale 0.2s ease-in;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  .left {
+    left: 5vw;
+  }
+
+  .right {
+    right: 5vw;
+  }
+}

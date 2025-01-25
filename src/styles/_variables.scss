@@ -1,0 +1,19 @@
+@use "@styles/helpers/functions" as *;
+
+:root {
+  --color-dark: #060501;
+  --color-light: #ffffff;
+  --color-accent: #ced5e7;
+  --color-grey: #dadada;
+  --color-lightgrey: #ecebeb;
+
+  --container-width: #{rem(1700)};
+  --container-padding-x: #{rem(20)};
+  --container-margin: clamp(0.625rem, 0.375rem + 1.25vw, 1.875rem);
+
+  --header-height: #{rem(100)};
+  --section-padding-block: clamp(4.688rem, 3.75rem + 4.69vw, 9.375rem);
+  --border-radius: #{rem(30)};
+
+  --font-family-base: "Montserrat", sans-serif;
+}

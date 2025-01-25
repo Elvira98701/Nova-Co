@@ -1,0 +1,145 @@
+@use "@styles/helpers/mixins" as *;
+@use "@styles/helpers/functions" as *;
+
+.about {
+  padding-block: var(--section-padding-block);
+  position: relative;
+
+  &__content {
+    max-width: rem(800);
+    margin-inline: auto;
+    text-align: center;
+    margin-bottom: clamp(3.75rem, 3rem + 3.75vw, 7.5rem);
+  }
+
+  &__title {
+    font-size: clamp(1.875rem, 1.375rem + 2.5vw, 4.375rem);
+    text-transform: capitalize;
+
+    &.element-show {
+      -webkit-animation: slideIn 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      animation: slideIn 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+  }
+
+  &__description {
+    width: 60%;
+    margin-inline: auto;
+    margin-block: rem(20);
+  }
+
+  &__buttons {
+    @include flex-center;
+    -moz-column-gap: rem(20);
+    column-gap: rem(20);
+  }
+
+  &__decorative {
+    @include flex-center;
+
+    @media (max-width: 750px) {
+      flex-direction: column;
+    }
+
+    &-block {
+      border-radius: rem(100);
+      flex: 1;
+      font-size: clamp(1.875rem, 1.25rem + 3.13vw, 5rem);
+      @include flex-center;
+      height: rem(250);
+      font-weight: 500;
+
+      @media (max-width: 750px) {
+        width: 100%;
+        min-height: rem(150);
+      }
+
+      &.element-animation {
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: all 0.45s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      &.element-show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      &:nth-child(1) {
+        background-color: var(--color-lightgrey);
+        transition-delay: 0.7s;
+      }
+
+      &:nth-child(2) {
+        background: url("../../public/images/ball.jpg") center / cover no-repeat;
+        color: var(--color-light);
+        transition-delay: 0.5s;
+      }
+
+      &:nth-child(3) {
+        background: var(--color-lightgrey)
+          url("../../public/icons/arrow-right.svg") center / 40% no-repeat;
+        transition-delay: 0.3s;
+      }
+
+      &:nth-child(4) {
+        background: url("../../public/images/ball2.jpg") center / cover
+          no-repeat;
+        color: var(--color-light);
+        transition-delay: 0.1s;
+      }
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    @include square(rem(50));
+    border-radius: 50%;
+
+    &.circle-1 {
+      background: url("../../public/images/projects/1.jpg") center / cover
+        no-repeat;
+      left: 15%;
+      top: 20%;
+
+      @media (max-width: 1300px) {
+        left: 2%;
+        top: 25%;
+      }
+    }
+
+    &.circle-2 {
+      background: url("../../public/images/projects/2.jpg") center / cover
+        no-repeat;
+      left: 20%;
+      top: 30%;
+
+      @media (max-width: 1300px) {
+        display: none;
+      }
+    }
+
+    &.circle-3 {
+      background: url("../../public/images/projects/3.jpg") center / cover
+        no-repeat;
+      right: 15%;
+      top: 20%;
+
+      @media (max-width: 1300px) {
+        right: 2%;
+        top: 25%;
+      }
+    }
+
+    &.circle-4 {
+      background: url("../../public/images/projects/4.jpg") center / cover
+        no-repeat;
+      right: 20%;
+      top: 30%;
+
+      @media (max-width: 1300px) {
+        display: none;
+      }
+    }
+  }
+}
