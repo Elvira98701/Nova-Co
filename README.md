@@ -1,6 +1,6 @@
-# Nature (Animated landing page)
+# Nova-Co (Animated landing page)
 ## Technical Implementation:
 * HTML, SCSS, JS
 * Vite
 
-# Nova-Co
+
