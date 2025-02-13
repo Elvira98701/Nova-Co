@@ -5,9 +5,9 @@ import { Slider } from "@scripts/slider";
 import { Accordion } from "@scripts/accordion";
 import { TeamSlider } from "@scripts/team-slider";
 import { Cursor } from "@scripts/cursor";
+import { Menu } from "@scripts/menu";
 
 import "@styles/index.scss";
-import { Menu } from "@scripts/menu";
 
 if (!isTouchDevice()) {
   new Cursor();
